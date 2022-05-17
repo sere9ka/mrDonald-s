@@ -4,7 +4,7 @@ import dbMenu from "../../fake/DBMenu";
 import { ListItems } from "./listItem-components";
 import BannerImg from "../../images/banner.png"
 
-const MenuStyled =styled.main`
+const MenuStyled = styled.main`
     backgtound-color: #ccc;
     margin-top: 80px;
 `;
