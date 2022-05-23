@@ -2,15 +2,19 @@ import React from "react";
 import { Overlay, Modal, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price } from "../styles/modalStyle";
 import { BlockButtons, ButtonPrimary } from "../system-component/button-component";
 
-export const ModalItem = ({ openItem, setOpenItem }) => {
+export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
     const closeModal = (e) => {
         if (e.target.id === 'overlay') {
             setOpenItem(null)
         }
     }
-    if (!openItem) {
-        return null
-    } else
+    const order = {
+        ...openItem
+    }
+    const addToOrder = () => {
+        setOrders([...orders, order])
+        setOpenItem(null)
+    }
     return (
         <Overlay id="overlay" onClick={closeModal}>
             <Modal>
@@ -21,7 +25,7 @@ export const ModalItem = ({ openItem, setOpenItem }) => {
                         <Price>{openItem.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</Price>
                     </ModalInfoItem>
                     <BlockButtons>
-                        <ButtonPrimary>Добавить</ButtonPrimary>
+                        <ButtonPrimary onClick={addToOrder}>Добавить</ButtonPrimary>
                     </BlockButtons>
                 </ModalBody>
             </Modal>

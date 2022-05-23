@@ -1,13 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import {Item, ItemName, ItemCount, ItemPrice, ItemDelete} from "../styles/orderStyle"
 
-export const OrderItem = () => {
+export const OrderItem = ({order}) => {
     return (
         <Item>
-            <ItemName>JS Burger</ItemName>
+            <ItemName>{order.name}</ItemName>
             <ItemCount>1</ItemCount>
-            <ItemPrice>350₽</ItemPrice>
+            <ItemPrice>{order.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</ItemPrice>
             <ItemDelete />
         </Item>
     )

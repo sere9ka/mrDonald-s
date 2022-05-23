@@ -22,8 +22,19 @@ const OrderTitle = styled.h2`
     line-height: 68px;
     text-align: center;
 `
-const OrderList = styled.ul`
+const OrderComponent = styled.div`
     flex-grow: 1;
+`
+const EmptyList = styled.p`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    text-align: center;
+`
+const OrderList = styled.ul`
+    
 `;
 const Total = styled.div`
     width: 100%;
@@ -92,4 +103,4 @@ const ItemDelete = styled.button`
     background: url(${Trash}) no-repeat center / cover;
 `;
 
-export {OrderBlock, OrderTitle, OrderList, Total, TextTotal, CountTotal, PriceTotal, Item, ItemName, ItemCount, ItemPrice, ItemDelete}
+export {OrderBlock, OrderTitle, EmptyList, OrderComponent, OrderList, Total, TextTotal, CountTotal, PriceTotal, Item, ItemName, ItemCount, ItemPrice, ItemDelete}
