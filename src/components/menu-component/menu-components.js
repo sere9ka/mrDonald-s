@@ -5,7 +5,8 @@ import { ListItems } from "./listItem-components";
 import { Banner } from "./banner"
 
 const MenuStyled = styled.main`
-    backgtound-color: #ccc;
+    margin-left: 380px;
+    background-color: #ccc;
     margin-top: 80px;
 `;
 const SectionStyled = styled.section`

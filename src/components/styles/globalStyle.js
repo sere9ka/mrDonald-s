@@ -40,6 +40,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   button {
     cursor: pointer;
+    outline: none;
+    border: 0;
   }
   input, button {
     font-family: inherit;

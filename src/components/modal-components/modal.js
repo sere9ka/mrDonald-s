@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import { Overlay, Modal, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price, BlockButtons, ButtonPrimary } from "../styles/modalStyle";
+import { Overlay, Modal, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price } from "../styles/modalStyle";
+import { BlockButtons, ButtonPrimary } from "../system-component/button-component";
 
 export const ModalItem = ({ openItem, setOpenItem }) => {
     const closeModal = (e) => {
