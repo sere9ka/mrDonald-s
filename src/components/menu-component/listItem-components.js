@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { formatCurrency } from "../functions/formatCurrency"
 
 const List = styled.ul`
     display: flex;
@@ -53,7 +54,7 @@ export const ListItems = ( {itemsList, setOpenItem} ) => (
             >
             
                 <p>{item.name}</p>
-                <p>{item.price.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</p>
+                <p>{formatCurrency(item.price)}</p>
 
             </Item>
         ))}

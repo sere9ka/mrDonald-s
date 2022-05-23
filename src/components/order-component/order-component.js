@@ -2,12 +2,14 @@ import React from "react";
 import { BlockButtons, ButtonPrimary } from "../system-component/button-component";
 import { OrderItem } from "./order-item";
 import {OrderBlock, OrderTitle, OrderComponent, OrderList, EmptyList, Total, TextTotal, CountTotal, PriceTotal} from "../styles/orderStyle"
+import { totalPriceItems } from "../functions/totalPriceItems";
+import { formatCurrency } from "../functions/formatCurrency";
 
 export const Order = ({orders, setOrders}) => {
-    let total = 0
-    orders.forEach(order => {
-        total += +order.price
-    });
+    const total = orders.reduce((result, order) => 
+        totalPriceItems(order) + result, 0)
+    const totalCount = orders.reduce((result, order) => 
+    order.count + result, 0)
     return (
         <OrderBlock>
             <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
@@ -24,8 +26,8 @@ export const Order = ({orders, setOrders}) => {
             <Total>
                 <TextTotal>Итого</TextTotal>
                 <div>
-                    <CountTotal>{orders.length}</CountTotal>
-                    <PriceTotal>{total.toLocaleString('ru-RU', {style: 'currency', currency: 'RUB'})}</PriceTotal>
+                    <CountTotal>{totalCount}</CountTotal>
+                    <PriceTotal>{formatCurrency(total)}</PriceTotal>
                 </div>
             </Total>
             <BlockButtons>

@@ -51,5 +51,9 @@ const Price = styled.strong`
     font-size: 30px;
     line-height: 53px;
 `
+const TotalPriceItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
-export { Overlay, Modal, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price }
+export { Overlay, Modal, TotalPriceItem, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price }
