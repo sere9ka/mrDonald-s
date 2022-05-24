@@ -54,6 +54,7 @@ const Price = styled.strong`
 const TotalPriceItem = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 `
 
 export { Overlay, Modal, TotalPriceItem, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price }

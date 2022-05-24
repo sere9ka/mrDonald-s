@@ -13,6 +13,7 @@ const OrderBlock = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 3px 4px 5px rgba(0,0,0,.25);
 `
 const OrderTitle = styled.h2`
     font-family: 'Pacifico';
