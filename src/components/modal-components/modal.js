@@ -7,10 +7,15 @@ import { formatCurrency } from "../functions/formatCurrency"
 import { totalPriceItems } from "../functions/totalPriceItems";
 import { Toppings } from "./topping";
 import { useToppings } from "../Hooks/useToppings";
+import { useChoices } from "../Hooks/useChoices";
+import { Choice } from "./choice";
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
-    const counter = useCount();
+    const counter = useCount(openItem.count);
     const toppings = useToppings(openItem)
+    const choices = useChoices(openItem)
+    let isEdit = openItem.index > -1;
+
     const closeModal = (e) => {
         if (e.target.id === 'overlay') {
             setOpenItem(null)
@@ -19,7 +24,15 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
     const order = {
         ...openItem,
         count: counter.count,
-        topping: toppings.toppings
+        topping: toppings.toppings,
+        choice: choices.choice,
+    }
+    const editOrder = () => {
+        const newOrders = [...orders];
+        newOrders[openItem.index] = order;
+        setOrders(newOrders);
+        setOpenItem(null)
+        // isEdit = false
     }
     const addToOrder = () => {
         setOrders([...orders, order])
@@ -36,12 +49,18 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                     </ModalInfoItem>
                     <CountItem {...counter}/>
                     {openItem.toppings && <Toppings {...toppings}/>}
+                    {openItem.choices && <Choice {...choices} openItem={openItem}/>}
                     <TotalPriceItem>
                         <span>Цена:</span>
                         <span>{formatCurrency(totalPriceItems(order))}</span>
                     </TotalPriceItem>
                     <BlockButtons>
-                        <ButtonPrimary onClick={addToOrder}>Добавить</ButtonPrimary>
+                        <ButtonPrimary 
+                            onClick={isEdit ? editOrder : addToOrder}
+                            disabled={order.choices && !order.choice}
+                        >
+                            {isEdit ? 'Редактировать' : 'Добавить'}
+                        </ButtonPrimary>
                     </BlockButtons>
                 </ModalBody>
             </Modal>

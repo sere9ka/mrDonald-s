@@ -5,7 +5,11 @@ import {OrderBlock, OrderTitle, OrderComponent, OrderList, EmptyList, Total, Tex
 import { totalPriceItems } from "../functions/totalPriceItems";
 import { formatCurrency } from "../functions/formatCurrency";
 
-export const Order = ({orders, setOrders}) => {
+export const Order = ({orders, setOrders, setOpenItem}) => {
+    const deleteItem = (index) => {
+        const newOrders = orders.filter((item, i) => i !== index);
+        setOrders(newOrders)
+    }
     const total = orders.reduce((result, order) => 
         totalPriceItems(order) + result, 0)
     const totalCount = orders.reduce((result, order) => 
@@ -16,8 +20,14 @@ export const Order = ({orders, setOrders}) => {
             <OrderComponent>
                 {orders.length ? 
                     <OrderList>
-                        {orders.map(order =>
-                            <OrderItem order={order} key={order.name + order.id}/>
+                        {orders.map((order, index) =>
+                            <OrderItem 
+                                order={order} 
+                                key={index + order.name}
+                                deleteItem={deleteItem}
+                                index={index}
+                                setOpenItem={setOpenItem}
+                            />
                         )}
                     </OrderList> :
                     <EmptyList>Вы еще ничего не выбрали</EmptyList>  

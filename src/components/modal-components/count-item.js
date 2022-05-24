@@ -19,7 +19,7 @@ const ButtonCount = styled.button`
     height: 20px;
 `
 
-export const CountItem = ({count, setCount, onChange }) => {
+export const CountItem = ({ count, setCount, onChange }) => {
     return (
         <CountWrapper>
             <h3>Количество</h3>

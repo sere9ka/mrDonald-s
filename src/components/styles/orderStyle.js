@@ -7,8 +7,7 @@ const OrderBlock = styled.aside`
     left: 0;
     background: #fff;
     padding: 23px 14px 23px 20px;
-    max-width: 380px;
-    width: 100%;
+    width: 380px;
     height: calc(100% - 80px);
     display: flex;
     flex-direction: column;
@@ -72,8 +71,14 @@ const PriceTotal = styled.strong`
 const Item = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 27px;
+    cursor: pointer;
+`
+const ItemTopping = styled.p`
+    width: 100%;
+    font-size: 14px;
 `
 const ItemName = styled.h3`
     max-width: 50%;
@@ -104,4 +109,4 @@ const ItemDelete = styled.button`
     background: url(${Trash}) no-repeat center / cover;
 `;
 
-export {OrderBlock, OrderTitle, EmptyList, OrderComponent, OrderList, Total, TextTotal, CountTotal, PriceTotal, Item, ItemName, ItemCount, ItemPrice, ItemDelete}
+export {OrderBlock, OrderTitle, EmptyList, OrderComponent, OrderList, Total, TextTotal, CountTotal, PriceTotal, Item, ItemTopping, ItemName, ItemCount, ItemPrice, ItemDelete}

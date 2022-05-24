@@ -18,6 +18,11 @@ const ButtonPrimary = styled.button`
     border: 0;
     outline: none;
     cursor: pointer;
+    &:disabled {
+        color: #bbb;
+        background-color: #ccc;
+        border-color: #aaa;
+    }
 `
 
 export { BlockButtons, ButtonPrimary }
