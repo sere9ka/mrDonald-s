@@ -5,7 +5,7 @@ import {OrderBlock, OrderTitle, OrderComponent, OrderList, EmptyList, Total, Tex
 import { totalPriceItems } from "../functions/totalPriceItems";
 import { formatCurrency } from "../functions/formatCurrency";
 
-export const Order = ({orders, setOrders, setOpenItem}) => {
+export const Order = ({orders, setOrders, setOpenItem, authentication, logIn, logOut }) => {
     const deleteItem = (index) => {
         const newOrders = orders.filter((item, i) => i !== index);
         setOrders(newOrders)
@@ -41,7 +41,7 @@ export const Order = ({orders, setOrders, setOpenItem}) => {
                 </div>
             </Total>
             <BlockButtons>
-                <ButtonPrimary>Оформить</ButtonPrimary>
+                <ButtonPrimary onClick={() => {authentication ? console.log('click') : logIn()}}>Оформить</ButtonPrimary>
             </BlockButtons>
         </OrderBlock>
     )
