@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { ListItems } from "./listItem-components";
 import { Banner } from "./banner"
-import { useFetch } from "../Hooks/useFetch";
 import { Preloader } from "../system-component/preloader";
 
 const MenuStyled = styled.main`
@@ -21,9 +20,8 @@ const PreloaderWrap = styled.div`
 
 `
 
-export const Menu = ({ setOpenItem }) => {
-    const res = useFetch();
-    const dbMenu = res.response;
+export const Menu = ({ setOpenItem, dbMenu }) => {
+
     return (
         <MenuStyled>
             <Banner />
@@ -39,8 +37,6 @@ export const Menu = ({ setOpenItem }) => {
                         </SectionStyled>
                     
                 </>
-                : res.error ?
-                <div>Ошибка при загрузке</div>
                 :
                 <PreloaderWrap>
                     <Preloader customText="Загрузка..."/>
