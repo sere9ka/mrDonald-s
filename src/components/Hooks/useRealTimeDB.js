@@ -11,7 +11,7 @@ export const useRealBase = (database) => {
             setDb(snapshot.val())
         });
         
-    }, [])
+    }, [database])
 
     return { db }
 }
