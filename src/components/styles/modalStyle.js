@@ -16,7 +16,7 @@ const Modal = styled.div`
     position: relative;
     background-color: #fff;
     width: 600px;
-    height: 600px;
+    min-height: 600px;
 `
 const ModalBanner = styled.div`
     width: 100%;

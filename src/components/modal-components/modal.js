@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Overlay, TotalPriceItem, Modal, ModalBanner, ModalBody, ModalInfoItem, ModalTitle, Price } from "../styles/modalStyle";
 import { BlockButtons, ButtonPrimary } from "../system-component/button-component";
 import { CountItem } from "./count-item";
@@ -9,8 +9,15 @@ import { Toppings } from "./topping";
 import { useToppings } from "../Hooks/useToppings";
 import { useChoices } from "../Hooks/useChoices";
 import { Choice } from "./choice";
+import { Context } from "../functions/context";
+import { ContextItem } from "../functions/context-item";
 
-export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
+export const ModalItem = () => {
+    const {
+        orders: {orders, setOrders}, 
+        openItem: {openItem, setOpenItem}, 
+    } = useContext(Context)
+
     const counter = useCount(openItem.count);
     const toppings = useToppings(openItem)
     const choices = useChoices(openItem)
@@ -47,9 +54,18 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
                         <ModalTitle>{openItem.name}</ModalTitle>
                         <Price>{formatCurrency(openItem.price)}</Price>
                     </ModalInfoItem>
-                    <CountItem {...counter}/>
-                    {openItem.toppings && <Toppings {...toppings}/>}
-                    {openItem.choices && <Choice {...choices} openItem={openItem}/>}
+                    
+                    <ContextItem.Provider value={{
+                        counter,
+                        toppings,
+                        choices,
+                        openItem
+                    }}>
+                        <CountItem />
+                        {openItem.toppings && <Toppings />}
+                        {openItem.choices && <Choice/>}
+                    </ContextItem.Provider>
+                    
                     <TotalPriceItem>
                         <span>Цена:</span>
                         <span>{formatCurrency(totalPriceItems(order))}</span>

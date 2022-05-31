@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AddWrapper, AddLabel, AddCheckbox } from "../styles/addStyle"
+import { ContextItem } from "../functions/context-item";
 
-export const Choice = ({ openItem, choice, checkChoice }) => {
+export const Choice = () => {
+    const {openItem, choices: { choice, checkChoice } } = useContext(ContextItem)
     return (
         <>
             <h2>Выберите: </h2>

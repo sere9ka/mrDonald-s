@@ -20,8 +20,8 @@ const PreloaderWrap = styled.div`
     heigth: 100%;
 
 `
-
-export const Menu = ({ setOpenItem }) => {
+export const Menu = () => {
+    // const { openItem: { setOpenItem } } = useContext(Context)
     const res = useFetch();
     const dbMenu = res.response;
     return (
@@ -29,15 +29,14 @@ export const Menu = ({ setOpenItem }) => {
             <Banner />
             { dbMenu ? 
                 <> 
-                        <SectionStyled>
-                            <h2>Бургеры</h2>
-                            <ListItems itemsList={dbMenu.burger} setOpenItem={setOpenItem}/>
-                        </SectionStyled>
-                        <SectionStyled>
-                            <h2>Закуски / Напитки</h2>
-                            <ListItems itemsList={dbMenu.other} setOpenItem={setOpenItem}/>
-                        </SectionStyled>
-                    
+                    <SectionStyled>
+                        <h2>Бургеры</h2>
+                        <ListItems itemsList={dbMenu.burger}/>
+                    </SectionStyled>
+                    <SectionStyled>
+                        <h2>Закуски / Напитки</h2>
+                        <ListItems itemsList={dbMenu.other}/>
+                    </SectionStyled>
                 </>
                 : res.error ?
                 <div>Ошибка при загрузке</div>

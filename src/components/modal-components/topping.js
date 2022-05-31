@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AddWrapper, AddLabel, AddCheckbox } from "../styles/addStyle"
+import { ContextItem } from "../functions/context-item";
 
-export const Toppings = ({ toppings, checkToppings }) => {
+export const Toppings = () => {
+    const { toppings: { toppings, checkToppings }} = useContext(ContextItem)
+    
     return (
         <>
             <h2>Дополнительно</h2>
